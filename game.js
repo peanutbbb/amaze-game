@@ -13,6 +13,7 @@ class MazeGame {
         this.cellSize = 0;
         this.soundEnabled = true;
         this.gameComplete = false;
+        this.messageCallback = null;
         
         this.init();
     }
@@ -101,7 +102,9 @@ class MazeGame {
         // Button controls
         document.getElementById('resetBtn').addEventListener('click', () => this.reset());
         document.getElementById('soundBtn').addEventListener('click', () => this.toggleSound());
-        document.getElementById('messageBtn').addEventListener('click', () => this.nextLevel());
+        document.getElementById('messageBtn').addEventListener('click', () => {
+            if (this.messageCallback) this.messageCallback();
+        });
     }
     
     handleKeydown(e) {
@@ -241,9 +244,8 @@ class MazeGame {
         document.getElementById('messageBtn').textContent = buttonText;
         document.getElementById('message').classList.remove('hidden');
         
-        // Replace the click handler
-        const btn = document.getElementById('messageBtn');
-        btn.onclick = callback;
+        // Store callback for the button to use
+        this.messageCallback = callback;
     }
     
     draw() {
@@ -319,7 +321,7 @@ class MazeGame {
         ctx.fill();
         
         // Draw fog of war (darken areas far from player)
-        const fogRadius = 4;
+        const fogRadius = 6;
         for (let y = 0; y < this.grid.length; y++) {
             for (let x = 0; x < this.grid[y].length; x++) {
                 const dist = Math.sqrt(
