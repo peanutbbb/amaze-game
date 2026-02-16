@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaze - Dark Maze Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌑 AMAZE</h1>
+            <p>Navigate the darkness. Find the exit.</p>
+        </header>
+        
+        <div class="game-info">
+            <div class="stats">
+                <span>Level: <span id="level">1</span></span>
+                <span>Moves: <span id="moves">0</span></span>
+                <span>Time: <span id="time">0</span>s</span>
+            </div>
+            <div class="controls">
+                <button id="resetBtn">↻ Reset</button>
+                <button id="soundBtn">🔊 Sound</button>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+        
+        <div class="instructions">
+            <p>Use <strong>Arrow Keys</strong> or <strong>WASD</strong> to move</p>
+            <p>On mobile: Swipe to move</p>
+        </div>
+
+        <div id="message" class="message hidden">
+            <div class="message-content">
+                <h2 id="messageTitle">Level Complete!</h2>
+                <p id="messageText">Great job navigating the maze.</p>
+                <button id="messageBtn">Next Level</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="levels.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
