@@ -189,6 +189,10 @@ class MazeGame {
     }
     
     reset() {
+        this.gameComplete = false;
+        this.stopTimer();
+        document.getElementById('time').textContent = '0';
+        document.getElementById('message').classList.add('hidden');
         this.loadLevel(this.currentLevel);
     }
     
